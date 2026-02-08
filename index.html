@@ -6,7 +6,10 @@
     <title>Zostaniesz moją Walentynką?</title>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
+        * { box-sizing: border-box; }
+
         :root { --primary-color: #ff4d6d; --bg-color: #fff0f5; }
+        
         body {
             display: flex;
             flex-direction: column;
@@ -18,6 +21,7 @@
             font-family: 'Segoe UI', system-ui, sans-serif;
             text-align: center;
             overflow-x: hidden;
+            padding: 10px;
         }
 
         .container {
@@ -26,7 +30,7 @@
             backdrop-filter: blur(10px);
             border-radius: 25px;
             box-shadow: 0 10px 30px rgba(255, 77, 109, 0.15);
-            width: 90%;
+            width: 100%; 
             max-width: 420px;
             display: flex;
             flex-direction: column;
@@ -37,6 +41,7 @@
         .bear-display {
             height: 160px;
             width: auto;
+            max-width: 100%; 
             margin-bottom: 1rem;
             object-fit: contain;
             filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
@@ -47,13 +52,7 @@
             font-size: 1.8rem;
             margin: 1rem 0;
             line-height: 1.2;
-        }
-
-        .message {
-            color: #590d22;
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.4;
+            word-wrap: break-word; 
         }
 
         .buttons {
@@ -75,6 +74,8 @@
             transition: all 0.2s ease;
             -webkit-tap-highlight-color: transparent;
             font-family: inherit;
+            max-width: 100%; 
+            white-space: normal;
         }
 
         #yesBtn {
@@ -98,13 +99,16 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.15);
             transform: rotate(-2deg);
             margin: 20px 0;
-            max-width: 100%;
+            width: 100%;
+            max-width: 300px;
         }
         .polaroid img {
             width: 100%;
+            height: auto;
             border-radius: 2px;
             display: block;
         }
+
         .ticket-info {
             background: #fff0f3;
             border: 2px dashed #ff8fa3;
@@ -113,6 +117,7 @@
             margin-top: 15px;
             width: 100%;
             box-sizing: border-box;
+            font-size: 0.95rem;
         }
 
         .hidden { display: none !important; }
@@ -121,6 +126,18 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            .bear-display {
+                height: 130px;
+            }
         }
     </style>
 </head>
@@ -141,9 +158,11 @@
         
         <h1>Wiedziałem! ❤️</h1>
         <h1>Kocham cię!</h1>
+        
         <div class="polaroid">
-            <img src="zdjecie.jpg" alt="Nasze zdjęcie" onerror="this.src='zdjecie.jng'">
+            <img src="IMG-20251227-WA0041.jpg" alt="Nasze zdjęcie" onerror="this.style.display='none'">
         </div>
+        
         <div class="ticket-info">
             <strong>🎁 PREZENT ODBLOKOWANY!</strong><br><br>
             Wygrałaś: <br>
